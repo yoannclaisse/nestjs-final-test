@@ -4,7 +4,7 @@ import { Injectable, NotImplementedException } from '@nestjs/common';
 export class TaskService {
     constructor() {}
 
-    addTask(name: string, userId: string, priority: number): Promise<void> {
+    addTask(name: string, userId: number, priority: number): Promise<void> {
         throw new NotImplementedException();
     }
 
@@ -12,7 +12,7 @@ export class TaskService {
         throw new NotImplementedException();
     }
 
-    getUserTasks(userId: string): Promise<unknown[]> {
+    getUserTasks(userId: number): Promise<unknown[]> {
         throw new NotImplementedException();
     }
 
