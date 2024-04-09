@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne } from "typeorm"
 import { User } from "./User"
 
 // name: string, userId: string, priority: number
@@ -9,7 +9,7 @@ export class Task {
     @PrimaryGeneratedColumn()
     id: number
 
-    @OneToOne((type) => User)
+    @ManyToOne((type) => User)
     @JoinColumn({  name: "userId" })
     user: User;
 
