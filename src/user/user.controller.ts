@@ -8,18 +8,18 @@ export class UserController {
 
     @Get(':email')
     getUserByEmail(@Param('email') email: string) {
-        return this.userService.getUserByEmail(email);
+        return this.userService.getUser(email);
     }
     
     @Get('/id/:id')
     getUserById(@Param('id') id: string) {
-        return this.userService.getUser(Number(id));
+        return this.userService.getUserById(Number(id));
     }
 
     @Post()
     createUser(@Body() post: User, ){
         // console.log(post)
-        return this.userService.addUser(post.email, post.username).catch(
+        return this.userService.addUser(post.email/*, post.username*/).catch(
             error => {
                 throw new HttpException(error.message, HttpStatus.BAD_REQUEST)
             }

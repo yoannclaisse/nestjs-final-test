@@ -13,22 +13,22 @@ export class UserService {
     ) {}
 
     // Ajouter un user
-    addUser(email: string, username: string): Promise<User> {
+    addUser(email: string/*, username: string*/): Promise<User> {
         const user = new User()
         user.email = email
-        user.username = username
+        // user.username = username
         return this.userRepository.save(user);
     }
 
     // Trouver un user par son email
-    getUserByEmail(email: string): Promise<User> {
+    getUser(email: string): Promise<User> {
         return this.userRepository.findOneBy({
             email: email
         })
     }
 
     // Trouver un user par son id
-    getUser(id: number): Promise<User> {
+    getUserById(id: number): Promise<User> {
         return this.userRepository.findOneBy({
             id: id
         })
