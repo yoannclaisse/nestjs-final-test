@@ -16,7 +16,7 @@ export class UserService {
     addUser(email: string/*, username: string*/): Promise<User> {
         const user = new User()
         user.email = email
-        // user.username = username
+        user.username = ""
         return this.userRepository.save(user);
     }
 
@@ -36,8 +36,7 @@ export class UserService {
 
     // Supprimer un user
     resetData(): Promise<void> {
-        // TODO : à faire plus tard
-        // return this.userRepository.delete(id)
-        throw new NotImplementedException();
+        // return this.userRepository.clear()
+        return this.userRepository.query("DELETE FROM public.user")
     }
 }
