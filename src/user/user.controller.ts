@@ -5,7 +5,7 @@ import { User } from '../entity/User';
 @Controller('')
 export class UserController {
 
-    constructor(private userService: UserService) { }
+    constructor(private userService: UserService) {}
 
     @Get(':email')
     getUserByEmail(@Param('email') email: string) {
@@ -18,7 +18,7 @@ export class UserController {
     }
 
     @Post()
-    async createUser(@Body() post: User,) {
+    async createUser(@Body() post: User) {
         const emailRegex = new RegExp("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")
         if (!emailRegex.test(post.email)) {
             throw new HttpException('email is not valid', HttpStatus.BAD_REQUEST)
