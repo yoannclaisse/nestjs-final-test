@@ -6,7 +6,7 @@ export class TaskController {
     constructor(private taskService: TaskService) {}
 
     @Post()
-    async createTask(@Body() post: any) {
+    createTask(@Body() post: any) {
         
         if(post.name == '') {
             throw new HttpException('Name is empty', HttpStatus.BAD_REQUEST)
@@ -32,7 +32,7 @@ export class TaskController {
     }
 
     @Get('/user/:id')
-    async getUserTasks(@Param('id') id:string) {
+    getUserTasks(@Param('id') id:string) {
         const userId = Number.parseInt(id)
         if(!Number.isInteger(userId) || Number(userId) <= 0) {
             throw new HttpException('User id is invalid', HttpStatus.BAD_REQUEST)

@@ -39,7 +39,7 @@ export class UserService {
     }
 
     // Supprimer un user
-    async resetData(): Promise<any> {
+    resetData(): Promise<any> {
         // return this.prisma.$executeRaw(Prisma.sql`DELETE FROM public.user`)
         return this.prisma.$transaction([
             this.prisma.task.deleteMany({}),
