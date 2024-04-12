@@ -7,16 +7,19 @@ export class UserController {
 
     constructor(private userService: UserService) { }
 
+    // sur la route "/user/email" on récupère le user avec son email passé en paramètre
     @Get(':email')
     getUserByEmail(@Param('email') email: string) {
         return this.userService.getUser(email);
     }
 
+    // sur la route "/user/id/1" on récupère le user avec son id passé en paramètre
     @Get('/id/:id')
     getUserById(@Param('id') id: string) {
         return this.userService.getUserById(Number(id));
     }
 
+    // Sur la route "/user", on créer un user
     @Post()
     createUser(@Body() post: User) {
         const emailRegex = new RegExp("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")

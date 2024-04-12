@@ -20,6 +20,7 @@ export class TaskService {
         })
     }
 
+    // Récupération des tasks par leur nom
     getTaskByName(name: string): Promise<Task> {
         return this.prisma.task.findFirst({
             where: {
@@ -28,6 +29,7 @@ export class TaskService {
         })
     }
 
+    // Récupération des tasks des Users
     getUserTasks(userId: number): Promise<Task[]> {
         return this.prisma.task.findMany({
             where: {
@@ -36,6 +38,7 @@ export class TaskService {
         })
     }
 
+    // Reset data pour les tests
     resetData(): Prisma.PrismaPromise<any> {
         return this.prisma.task.deleteMany({})
     }

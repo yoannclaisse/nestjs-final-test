@@ -5,6 +5,7 @@ import { TaskService } from './task.service';
 export class TaskController {
     constructor(private taskService: TaskService) {}
 
+    // Sur la route de base "/task" on crée une task 
     @Post()
     createTask(@Body() post: any) {
         
@@ -26,21 +27,19 @@ export class TaskController {
         )
     }
 
+    // Sur la route "/test/name" on récupère la task par son nom
     @Get(':name')
     getTaskByName(@Param('name') name: string) {
         return this.taskService.getTaskByName(name)
     }
 
+    // Sur la route "/task/user/id" on recupère les de tasks de chaque user
     @Get('/user/:id')
     getUserTasks(@Param('id') id:string) {
         const userId = Number.parseInt(id)
         if(!Number.isInteger(userId) || Number(userId) <= 0) {
             throw new HttpException('User id is invalid', HttpStatus.BAD_REQUEST)
         }
-        // const user = await this.userService.getUserById(Number(id))
-        // if (!user) {
-        //     throw new HttpException('User does not exist', HttpStatus.BAD_REQUEST)
-        // }
         return this.taskService.getUserTasks(Number(userId))
     }
     

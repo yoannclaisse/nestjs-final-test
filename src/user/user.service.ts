@@ -13,15 +13,11 @@ export class UserService {
         const user = new User()
         user.email = email
         user.username = ""
-        // return this.userRepository.save(user);
         return this.prisma.user.create({ data: user })
     }
 
-    // Trouver un user par son email
+    // Récupérer un user par son email
     getUser(email: string): Promise<User> {
-        // return this.userRepository.findOneBy({
-        //     email: email
-        // })
         return this.prisma.user.findUnique({
             where: {
                 email: email
@@ -29,7 +25,7 @@ export class UserService {
         })
     }
 
-    // Trouver un user par son id
+    // Récupérer un user par son id
     getUserById(id: number): Promise<User> {
         return this.prisma.user.findUnique({
             where: {
@@ -38,9 +34,8 @@ export class UserService {
         })
     }
 
-    // Supprimer un user
+    // Supprimer un user pour les tests
     resetData(): Promise<any> {
-        // return this.prisma.$executeRaw(Prisma.sql`DELETE FROM public.user`)
         return this.prisma.$transaction([
             this.prisma.task.deleteMany({}),
             this.prisma.user.deleteMany({})
