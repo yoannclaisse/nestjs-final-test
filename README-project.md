@@ -9,8 +9,8 @@ Pour ce test final j'ai utilisé la base de données Postgres, avec l'ORM Prisma
 ```
 git clone git@github.com:yoannclaisse/nestjs-final-test.git
 npm ci
-npm run start:postgres
-npm run test:e2e:postgres
+npm run start:postgres:linux
+npm run test:e2e:postgres:linux
 ```
 
 **🪟 Pour windows :**
